@@ -1,0 +1,14 @@
+.env
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env.local
+
+# local junk
+.DS_Store
+.idea/
+.vscode/
+
+# Keep calls folder and ignores temporary files
+calls/**/*.tmp
