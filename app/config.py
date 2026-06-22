@@ -11,9 +11,10 @@ class Settings(BaseSettings):
 
     public_base_url: str = Field(..., env="PUBLIC_BASE_URL")
 
-    assessment_number: str = Field(..., env="ASSESSMENT_NUMBER")
+    # Default assessment number (safety guard) can be overridden via env
+    assessment_number: str = Field("+18054398008", env="ASSESSMENT_NUMBER")
 
-class Config:
+    class Config:
         env_file = ".env"
         extra = "ignore"
 
