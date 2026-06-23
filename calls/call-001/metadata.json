@@ -3,7 +3,7 @@
   "title": "Simple appointment scheduling",
   "goal": "Schedule a new patient appointment for a routine annual checkup.",
   "status": "started",
-  "twilio_call_sid": "CA229cf68e5fe752c815901edc32941c7d",
+  "twilio_call_sid": "CAe322c706ca66a4b34d3b7706b2b98253",
   "to_number": "+18054398008",
   "voice_url": "https://rewind-strum-detective.ngrok-free.dev/voice/call-001",
   "status_callback_url": "https://rewind-strum-detective.ngrok-free.dev/twilio/status/call-001",
