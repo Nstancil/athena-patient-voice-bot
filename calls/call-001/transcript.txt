@@ -1,0 +1,8 @@
+Scenario ID: call-001
+Scenario Title: Test Call
+Scenario Goal: Make sure transcript logging works
+Started At: 2026-06-23 15:41:52
+======================================================================
+
+[2026-06-23 15:41:52] PATIENT: Hi, I need an appointment.
+[2026-06-23 15:41:52] AGENT: Sure, I can help with that.

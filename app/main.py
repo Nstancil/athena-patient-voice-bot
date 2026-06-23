@@ -1,6 +1,11 @@
 import json
 from pathlib import Path
 
+from app.config import settings
+from app.scenarios import SCENARIOS
+from app.transcript import TranscriptLogger
+from app.realtime_bridge import run_realtime_bridge
+
 
 from fastapi import FastAPI, Request, WebSocket, WebSocketDisconnect
 from fastapi.responses import PlainTextResponse, Response
@@ -104,6 +109,25 @@ async def voice_webhook(scenario_id: str):
 
 @app.websocket("/media/{scenario_id}")
 async def media_stream(websocket: WebSocket, scenario_id: str):
+    """
+    Twilio connects here after receiving TwiML from /voice/{scenario_id}.
+
+    This now starts the real-time bridge:
+    Twilio audio <-> OpenAI Realtime audio.
+    """
+    await websocket.accept()
+
+    scenario = find_scenario(scenario_id)
+
+    if scenario is None:
+        print(f"Unknown scenario for media stream: {scenario_id}")
+        await websocket.close(code=1008)
+        return
+
+    await run_realtime_bridge(
+        twilio_ws=websocket,
+        scenario=scenario,
+    )
     """
     Twilio connects here after receiving the TwiML from /voice/{scenario_id}.
 

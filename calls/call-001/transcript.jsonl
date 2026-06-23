@@ -1,0 +1,3 @@
+{"kind": "header", "scenario_id": "call-001", "scenario_title": "Test Call", "scenario_goal": "Make sure transcript logging works", "timestamp": "2026-06-23T19:41:52.645985+00:00"}
+{"timestamp": "2026-06-23T19:41:52.646385+00:00", "speaker": "PATIENT", "text": "Hi, I need an appointment.", "kind": "turn"}
+{"timestamp": "2026-06-23T19:41:52.646861+00:00", "speaker": "AGENT", "text": "Sure, I can help with that.", "kind": "turn"}
