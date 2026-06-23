@@ -1,14 +1,14 @@
 .env
+.venv/
 __pycache__/
 *.pyc
-.venv/
-venv/
-.env.local
 
-# local junk
-.DS_Store
-.idea/
-.vscode/
-
-# Keep calls folder and ignores temporary files
-calls/**/*.tmp
+# Do not commit raw Twilio/OpenAI event logs or callback metadata
+calls/**/*.json
+calls/**/*.jsonl
+calls/**/metadata.json
+calls/**/status_callback.json
+calls/**/recording_callback.json
+calls/**/voice_webhook.json
+calls/**/stream_start.json
+calls/**/stream_stop.json

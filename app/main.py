@@ -10,6 +10,8 @@ from app.scenarios import SCENARIOS
 from app.transcript import TranscriptLogger
 from app.realtime_bridge import run_realtime_bridge
 
+import requests
+
 
 app = FastAPI(title="Athena Patient Voice Bot")
 
@@ -132,6 +134,29 @@ async def twilio_status_callback(scenario_id: str, request: Request):
     return PlainTextResponse("ok")
 
 
+def download_recording_mp3(recording_url: str, output_path: Path) -> None:
+    """
+    Download Twilio recording as MP3.
+
+    Twilio recording callback usually gives RecordingUrl without the file extension.
+    Adding .mp3 downloads the MP3 version.
+    """
+    if not recording_url:
+        return
+
+    mp3_url = recording_url + ".mp3"
+
+    response = requests.get(
+        mp3_url,
+        auth=(settings.twilio_account_sid, settings.twilio_auth_token),
+        timeout=30,
+    )
+
+    response.raise_for_status()
+
+    with output_path.open("wb") as file:
+        file.write(response.content)
+
 @app.post("/twilio/recording/{scenario_id}")
 async def twilio_recording_callback(scenario_id: str, request: Request):
     form = await request.form()
@@ -139,6 +164,24 @@ async def twilio_recording_callback(scenario_id: str, request: Request):
 
     call_folder = get_call_folder(scenario_id)
     save_json(call_folder / "recording_callback.json", data)
+
+    recording_url = data.get("RecordingUrl")
+
+    if recording_url:
+        recording_path = call_folder / "recording.mp3"
+
+        try:
+            download_recording_mp3(recording_url, recording_path)
+            print(f"[{scenario_id}] Recording downloaded: {recording_path}")
+        except Exception as error:
+            print(f"[{scenario_id}] Failed to download recording: {error}")
+            save_json(
+                call_folder / "recording_download_error.json",
+                {
+                    "error": str(error),
+                    "recording_url": recording_url,
+                },
+            )
 
     print(f"[{scenario_id}] Recording callback received")
 
