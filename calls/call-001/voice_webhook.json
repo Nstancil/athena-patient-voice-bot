@@ -1,0 +1,5 @@
+{
+  "scenario_id": "call-001",
+  "scenario_title": "Simple appointment scheduling",
+  "stream_url": "wss://rewind-strum-detective.ngrok-free.dev/media/call-001"
+}

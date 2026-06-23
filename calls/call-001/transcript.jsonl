@@ -1,3 +1,7 @@
 {"kind": "header", "scenario_id": "call-001", "scenario_title": "Test Call", "scenario_goal": "Make sure transcript logging works", "timestamp": "2026-06-23T19:41:52.645985+00:00"}
 {"timestamp": "2026-06-23T19:41:52.646385+00:00", "speaker": "PATIENT", "text": "Hi, I need an appointment.", "kind": "turn"}
 {"timestamp": "2026-06-23T19:41:52.646861+00:00", "speaker": "AGENT", "text": "Sure, I can help with that.", "kind": "turn"}
+{"kind": "header", "scenario_id": "call-001", "scenario_title": "Simple appointment scheduling", "scenario_goal": "Schedule a new patient appointment for a routine annual checkup.", "timestamp": "2026-06-23T22:53:32.445832+00:00"}
+{"kind": "note", "timestamp": "2026-06-23T22:53:32.446316+00:00", "text": "Twilio voice webhook received. Call stream is being connected."}
+{"kind": "header", "scenario_id": "call-001", "scenario_title": "Simple appointment scheduling", "scenario_goal": "Schedule a new patient appointment for a routine annual checkup.", "timestamp": "2026-06-23T22:54:15.948028+00:00"}
+{"kind": "note", "timestamp": "2026-06-23T22:54:15.948570+00:00", "text": "Twilio voice webhook received. Call stream is being connected."}
