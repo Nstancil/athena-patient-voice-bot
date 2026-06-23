@@ -5,3 +5,30 @@
 {"kind": "note", "timestamp": "2026-06-23T22:53:32.446316+00:00", "text": "Twilio voice webhook received. Call stream is being connected."}
 {"kind": "header", "scenario_id": "call-001", "scenario_title": "Simple appointment scheduling", "scenario_goal": "Schedule a new patient appointment for a routine annual checkup.", "timestamp": "2026-06-23T22:54:15.948028+00:00"}
 {"kind": "note", "timestamp": "2026-06-23T22:54:15.948570+00:00", "text": "Twilio voice webhook received. Call stream is being connected."}
+{"kind": "header", "scenario_id": "call-001", "scenario_title": "Simple appointment scheduling", "scenario_goal": "Schedule a new patient appointment for a routine annual checkup.", "timestamp": "2026-06-23T23:10:09.329395+00:00"}
+{"kind": "note", "timestamp": "2026-06-23T23:10:09.329736+00:00", "text": "Twilio voice webhook received. Call stream is being connected."}
+{"kind": "note", "timestamp": "2026-06-23T23:10:09.452969+00:00", "text": "Connecting to OpenAI Realtime."}
+{"kind": "note", "timestamp": "2026-06-23T23:10:10.514768+00:00", "text": "Connected to OpenAI Realtime. Sending session update."}
+{"kind": "note", "timestamp": "2026-06-23T23:10:10.517162+00:00", "text": "Twilio WebSocket connected."}
+{"kind": "note", "timestamp": "2026-06-23T23:10:10.518056+00:00", "text": "Twilio stream started. call_sid=CA229cf68e5fe752c815901edc32941c7d"}
+{"timestamp": "2026-06-23T23:10:16.130113+00:00", "speaker": "AGENT", "text": "This call may be recorded for quality and training purposes. Para espa\u00f1ol, oprima el dos.", "kind": "turn"}
+{"timestamp": "2026-06-23T23:10:16.740094+00:00", "speaker": "PATIENT", "text": "Hi, this is Jordan Miller. I\u2019d like", "kind": "turn"}
+{"timestamp": "2026-06-23T23:10:18.605283+00:00", "speaker": "AGENT", "text": "Thank you for calling.", "kind": "turn"}
+{"timestamp": "2026-06-23T23:10:22.054997+00:00", "speaker": "PATIENT", "text": "Hi, I\u2019m just calling to set up a routine checkup.", "kind": "turn"}
+{"timestamp": "2026-06-23T23:10:22.059730+00:00", "speaker": "PATIENT", "text": "I\u2019m a new patient and want to schedule a routine annual checkup. I prefer next Tuesday morning, but Thursday afternoon also works.", "kind": "turn"}
+{"timestamp": "2026-06-23T23:10:39.531776+00:00", "speaker": "AGENT", "text": "To help you schedule your checkup, I'll need to create a demo patient profile for you. Can I get your first and last name?", "kind": "turn"}
+{"timestamp": "2026-06-23T23:10:39.838192+00:00", "speaker": "PATIENT", "text": "Jordan Miller.", "kind": "turn"}
+{"timestamp": "2026-06-23T23:10:57.087692+00:00", "speaker": "AGENT", "text": "Your patient profile is set up and your date of birth is July 4th, 2000 for demo purposes. How can I help you today?", "kind": "turn"}
+{"timestamp": "2026-06-23T23:10:58.912963+00:00", "speaker": "PATIENT", "text": "My date of birth is April 18, 1986. I\u2019m looking to schedule a routine annual checkup, and I prefer next Tuesday morning if that\u2019s available.", "kind": "turn"}
+{"timestamp": "2026-06-23T23:11:28.260891+00:00", "speaker": "AGENT", "text": "The earliest opening next Tuesday morning is not available, but I do see a slot with Dr. Doody Hauser at 12:45 p.m. Would you like to book that, or would you prefer to hear about Thursday afternoon options?", "kind": "turn"}
+{"timestamp": "2026-06-23T23:11:30.129765+00:00", "speaker": "PATIENT", "text": "12:45 is a bit later than I was hoping for. Could you tell me what Thursday afternoon options are available?", "kind": "turn"}
+{"timestamp": "2026-06-23T23:11:50.622815+00:00", "speaker": "AGENT", "text": "Here are Thursday afternoon options with Dr. Dudi Hauser: 12:45 p.m., 1:30 p.m., or 3 p.m. Would any of these work for your checkup?", "kind": "turn"}
+{"timestamp": "2026-06-23T23:11:51.783617+00:00", "speaker": "PATIENT", "text": "1:30 p.m. on Thursday works for me. Let\u2019s book that, please.", "kind": "turn"}
+{"timestamp": "2026-06-23T23:12:15.640809+00:00", "speaker": "AGENT", "text": "Your routine checkup is booked for Thursday, July 2nd at 1:30 p.m. Please bring your photo ID, insurance card, a list of your current medications, and any imaging discs you have. Would you like a text message with your appointment details?", "kind": "turn"}
+{"timestamp": "2026-06-23T23:12:17.713235+00:00", "speaker": "PATIENT", "text": "Yes, a text message would be great. I have Blue Cross insurance, and I\u2019ll bring my card and photo ID. Thanks for your help.", "kind": "turn"}
+{"timestamp": "2026-06-23T23:12:41.404956+00:00", "speaker": "AGENT", "text": "You'll get a text with your appointment details soon. We have your insurance info noted, and you're all set for your visit. If you have any other questions, just let me know.", "kind": "turn"}
+{"timestamp": "2026-06-23T23:12:42.071787+00:00", "speaker": "PATIENT", "text": "That\u2019s all I needed. Thanks, have a great day.", "kind": "turn"}
+{"timestamp": "2026-06-23T23:12:49.497056+00:00", "speaker": "AGENT", "text": "You're all set! Have a great day!", "kind": "turn"}
+{"timestamp": "2026-06-23T23:12:50.204460+00:00", "speaker": "PATIENT", "text": "Thanks, you too. Goodbye.", "kind": "turn"}
+{"kind": "note", "timestamp": "2026-06-23T23:12:52.986099+00:00", "text": "Twilio stream stopped."}
+{"kind": "note", "timestamp": "2026-06-23T23:12:55.081966+00:00", "text": "Realtime bridge closed."}
