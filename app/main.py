@@ -1,19 +1,15 @@
 import json
 from pathlib import Path
 
+from fastapi import FastAPI, Request, WebSocket
+from fastapi.responses import PlainTextResponse, Response
+from twilio.twiml.voice_response import VoiceResponse
+
 from app.config import settings
 from app.scenarios import SCENARIOS
 from app.transcript import TranscriptLogger
 from app.realtime_bridge import run_realtime_bridge
 
-
-from fastapi import FastAPI, Request, WebSocket, WebSocketDisconnect
-from fastapi.responses import PlainTextResponse, Response
-
-from twilio.twiml.voice_response import VoiceResponse
-
-from app.config import settings
-from app.scenarios import SCENARIOS
 
 app = FastAPI(title="Athena Patient Voice Bot")
 
@@ -24,6 +20,7 @@ def get_call_folder(scenario_id: str) -> Path:
     folder = CALLS_DIR / scenario_id
     folder.mkdir(parents=True, exist_ok=True)
     return folder
+
 
 def save_json(path: Path, data: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -39,10 +36,8 @@ def find_scenario(scenario_id: str):
 
     return None
 
+
 def public_url_to_websocket_url(public_url: str) -> str:
-    """
-    For WebSocket connections, we need to convert the public URL to a WebSocket URL.
-    """
     clean_url = public_url.rstrip("/")
 
     if clean_url.startswith("https://"):
@@ -51,9 +46,8 @@ def public_url_to_websocket_url(public_url: str) -> str:
     if clean_url.startswith("http://"):
         return clean_url.replace("http://", "ws://", 1)
 
-    raise ValueError(
-        "PUBLIC_BASE_URL must start with http:// or https://"
-    )
+    raise ValueError("PUBLIC_BASE_URL must start with http:// or https://")
+
 
 @app.get("/health")
 async def health_check():
@@ -65,11 +59,6 @@ async def health_check():
 
 @app.post("/voice/{scenario_id}")
 async def voice_webhook(scenario_id: str):
-    """
-    Twilio hits this endpoint when the outbound call connects.
-
-    We respond with TwiML telling Twilio:
-    """
     scenario = find_scenario(scenario_id)
 
     if scenario is None:
@@ -87,6 +76,13 @@ async def voice_webhook(scenario_id: str):
 
     call_folder = get_call_folder(scenario_id)
 
+    transcript = TranscriptLogger(scenario_id)
+    transcript.write_header(
+        scenario_title=scenario.title,
+        scenario_goal=scenario.goal,
+    )
+    transcript.add_note("Twilio voice webhook received. Call stream is being connected.")
+
     save_json(
         call_folder / "voice_webhook.json",
         {
@@ -97,7 +93,6 @@ async def voice_webhook(scenario_id: str):
     )
 
     response = VoiceResponse()
-
     connect = response.connect()
     connect.stream(url=stream_url)
 
@@ -109,12 +104,6 @@ async def voice_webhook(scenario_id: str):
 
 @app.websocket("/media/{scenario_id}")
 async def media_stream(websocket: WebSocket, scenario_id: str):
-    """
-    Twilio connects here after receiving TwiML from /voice/{scenario_id}.
-
-    This now starts the real-time bridge:
-    Twilio audio <-> OpenAI Realtime audio.
-    """
     await websocket.accept()
 
     scenario = find_scenario(scenario_id)
@@ -128,84 +117,10 @@ async def media_stream(websocket: WebSocket, scenario_id: str):
         twilio_ws=websocket,
         scenario=scenario,
     )
-    """
-    Twilio connects here after receiving the TwiML from /voice/{scenario_id}.
-
-   
-    """
-    await websocket.accept()
-
-    call_folder = get_call_folder(scenario_id)
-    events_path = call_folder / "twilio_events.jsonl"
-
-    print(f"WebSocket connected for scenario: {scenario_id}")
-
-    try:
-        while True:
-            raw_message = await websocket.receive_text()
-            message = json.loads(raw_message)
-
-            event_type = message.get("event")
-
-            with events_path.open("a", encoding="utf-8") as file:
-                file.write(json.dumps(message) + "\n")
-
-            if event_type == "connected":
-                print(f"[{scenario_id}] Twilio connected")
-
-            elif event_type == "start":
-                start_data = message.get("start", {})
-                stream_sid = start_data.get("streamSid")
-                call_sid = start_data.get("callSid")
-
-                print(f"[{scenario_id}] Stream started")
-                print(f"  streamSid: {stream_sid}")
-                print(f"  callSid: {call_sid}")
-
-                save_json(
-                    call_folder / "stream_start.json",
-                    {
-                        "scenario_id": scenario_id,
-                        "stream_sid": stream_sid,
-                        "call_sid": call_sid,
-                        "raw_start": start_data,
-                    },
-                )
-
-            elif event_type == "media":
-                # Audio chunks arrive here.
-                
-                pass
-
-            elif event_type == "stop":
-                print(f"[{scenario_id}] Stream stopped")
-                save_json(
-                    call_folder / "stream_stop.json",
-                    {
-                        "scenario_id": scenario_id,
-                        "raw_stop": message.get("stop", {}),
-                    },
-                )
-                break
-
-            else:
-                print(f"[{scenario_id}] Event: {event_type}")
-
-    except WebSocketDisconnect:
-        print(f"WebSocket disconnected for scenario: {scenario_id}")
-
-    except Exception as error:
-        print(f"WebSocket error for {scenario_id}: {error}")
-
-    finally:
-        print(f"WebSocket closed for scenario: {scenario_id}")
 
 
 @app.post("/twilio/status/{scenario_id}")
 async def twilio_status_callback(scenario_id: str, request: Request):
-    """
-    Twilio sends call status updates here.
-    """
     form = await request.form()
     data = dict(form)
 
@@ -219,10 +134,6 @@ async def twilio_status_callback(scenario_id: str, request: Request):
 
 @app.post("/twilio/recording/{scenario_id}")
 async def twilio_recording_callback(scenario_id: str, request: Request):
-    """
-    Twilio sends recording info here after a recording is available.
-
-    """
     form = await request.form()
     data = dict(form)
 
