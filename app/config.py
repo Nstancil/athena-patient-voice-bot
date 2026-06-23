@@ -1,34 +1,31 @@
-from pydantic_settings import BaseSettings
-from pydantic import Field  
+﻿from pydantic import Field
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    openai_api_key: str = Field(..., env="OPENAI_API_KEY")
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        extra="ignore",
+    )
 
-    twilio_account_sid: str = Field(..., env="TWILIO_ACCOUNT_SID")
-    twilio_auth_token: str = Field(..., env="TWILIO_AUTH_TOKEN")
-    twilio_from_number: str = Field(..., env="TWILIO_FROM_NUMBER")
+    openai_api_key: str = Field(default="", alias="OPENAI_API_KEY")
 
-    public_base_url: str = Field(..., env="PUBLIC_BASE_URL")
+    twilio_account_sid: str = Field(default="", alias="TWILIO_ACCOUNT_SID")
+    twilio_auth_token: str = Field(default="", alias="TWILIO_AUTH_TOKEN")
+    twilio_from_number: str = Field(default="", alias="TWILIO_FROM_NUMBER")
 
-    # Default assessment number (safety guard) can be overridden via env
-    assessment_number: str = Field("+18054398008", env="ASSESSMENT_NUMBER")
+    public_base_url: str = Field(default="", alias="PUBLIC_BASE_URL")
 
-    class Config:
-        env_file = ".env"
-        extra = "ignore"
+    assessment_number: str = Field(
+        default="+18054398008",
+        alias="ASSESSMENT_NUMBER",
+    )
 
 
 settings = Settings()
 
 
 def validate_assessment_number(to_number: str) -> None:
-    """
-    Safety guard.
-
-    The challenge says all test calls must go only to +1-805-439-8008.
-    This prevents accidental calls to any other number.
-    """
     normalized = to_number.replace("-", "").replace(" ", "")
 
     if normalized != settings.assessment_number:
@@ -39,8 +36,6 @@ def validate_assessment_number(to_number: str) -> None:
 
 
 def require_env_for_live_calls() -> None:
-    
-    " Add the required environment variables 6/22 " 
     missing = []
 
     if not settings.twilio_account_sid:
