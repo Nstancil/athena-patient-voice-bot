@@ -1,0 +1,27 @@
+Scenario ID: call-003
+Scenario Title: Cancel appointment
+Scenario Goal: Cancel an appointment and ask about cancellation policy.
+Started At: 2026-06-23 19:52:49
+======================================================================
+
+[2026-06-23 19:52:49] NOTE: Twilio voice webhook received. Call stream is being connected.
+[2026-06-23 19:52:49] NOTE: Connecting to OpenAI Realtime.
+[2026-06-23 19:52:50] NOTE: Connected to OpenAI Realtime. Sending session update.
+[2026-06-23 19:52:50] NOTE: Twilio WebSocket connected.
+[2026-06-23 19:52:50] NOTE: Twilio stream started. call_sid=CA92e766533b8e3fea94d7bdfd1025b64b
+[2026-06-23 19:52:56] AGENT: This call may be recorded for quality and training purposes. Para español, oprima el dos.
+[2026-06-23 19:53:03] AGENT: Thanks for calling Pivot Point Orthopedics, part of PrettyGoodAI. Am I speaking with Jordan?
+[2026-06-23 19:53:04] PATIENT: Hi, I’m Morgan Lee. I have an appointment tomorrow at 10 AM that I need to cancel.
+[2026-06-23 19:53:17] AGENT: Please provide the full name and date of birth of the patient whose appointment you need to cancel.
+[2026-06-23 19:53:19] PATIENT: Morgan Lee, date of birth is February 3, 1991.
+[2026-06-23 19:53:31] AGENT: Just to confirm, can you please spell your first and last name for me?
+[2026-06-23 19:53:34] PATIENT: First name Morgan, M O R G A N. Last name Lee, L E E. Also, is there a cancellation fee or policy I should know about?
+[2026-06-23 19:53:59] AGENT: I'll check on the cancellation policy for you. First, do you want to use your phone number to look up your record? If so, please provide the number you have on file with us. If you're not sure, I can confirm your name and date of birth again. Which would you prefer?
+[2026-06-23 19:54:03] PATIENT: Okay, let’s keep it simple and use my details on file.
+[2026-06-23 19:54:03] PATIENT: Name and date of birth are fine. Morgan Lee, born February 3, 1991.
+[2026-06-23 19:54:24] AGENT: I can't proceed further right now, but I can make sure our clinic support team follows up with you. Please hold while I connect you to our patient support team.
+[2026-06-23 19:54:28] AGENT: Connecting you to a representative. Please wait.
+[2026-06-23 19:54:33] AGENT: Hello, you've reached the Pretty Good AI test line. Goodbye.
+[2026-06-23 19:54:35] PATIENT: Oh, okay. I didn’t get confirmation that my appointment was canceled, so I’ll call back to make sure. Thanks anyway.
+[2026-06-23 19:54:45] NOTE: Twilio stream stopped.
+[2026-06-23 19:54:47] NOTE: Realtime bridge closed.

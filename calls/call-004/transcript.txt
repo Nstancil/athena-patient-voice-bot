@@ -1,0 +1,33 @@
+Scenario ID: call-004
+Scenario Title: Medication refill request
+Scenario Goal: Request a refill and see how the agent handles medication workflows.
+Started At: 2026-06-23 19:55:49
+======================================================================
+
+[2026-06-23 19:55:49] NOTE: Twilio voice webhook received. Call stream is being connected.
+[2026-06-23 19:55:49] NOTE: Connecting to OpenAI Realtime.
+[2026-06-23 19:55:50] NOTE: Connected to OpenAI Realtime. Sending session update.
+[2026-06-23 19:55:50] NOTE: Twilio WebSocket connected.
+[2026-06-23 19:55:50] NOTE: Twilio stream started. call_sid=CA16ad2b5d3f8e5b4161f11a5bca6839d4
+[2026-06-23 19:55:56] AGENT: This call may be recorded for quality and training purposes. Para español, oprima el dos.
+[2026-06-23 19:56:02] AGENT: Thanks for calling To the Point Orthopedics, part of Pretty Good AI. Am I speaking with Jordan?
+[2026-06-23 19:56:03] PATIENT: No, this is Taylor Brooks. I'm calling about a medication refill.
+[2026-06-23 19:56:17] AGENT: Please provide the full name and date of birth of the patient needing the medication refill.
+[2026-06-23 19:56:18] PATIENT: Taylor Brooks, date of birth July 22, 1968.
+[2026-06-23 19:56:37] AGENT: Just to confirm, I have your name as Taylor Brooks and your date of birth as July 22, 1968. Is that correct? If so, could you please spell your first and last name for me?
+[2026-06-23 19:56:39] PATIENT: Yes, that’s correct. First name Taylor, T-A-Y-L-O-R. Last name Brooks, B-R-O-O-K-S.
+[2026-06-23 19:57:04] AGENT: Would you like to use your phone number to look up your record? If so, please provide the number you have on file with us. If you're not sure, just let me know and we'll confirm your name and date of birth again.
+[2026-06-23 19:57:09] PATIENT: Sure, let me share the number I have on file.
+[2026-06-23 19:57:09] PATIENT: I’m not sure which number you have on file. You can confirm with my name and date of birth again if needed. I’m calling to request a refill for atorvastatin, 20 milligrams. I’ve got about three days left. Could it be sent today to the CVS on Main Street?
+[2026-06-23 19:57:36] AGENT: Let's confirm your details one more time. I have your name as Taylor Brooks, spelled T-A-Y-L-O-R, last name B-R-O-O-K-S.
+[2026-06-23 19:57:42] AGENT: And your date of birth is July 22, 1968. Is all of that correct?
+[2026-06-23 19:57:43] PATIENT: Yes, that’s correct.
+[2026-06-23 19:57:59] AGENT: I have your phone number as 971-458-8244, and your date of birth is July 22nd, 1968. Is that correct?
+[2026-06-23 19:58:02] PATIENT: I’m not sure about the phone number you have listed, but my name and date of birth are correct. Could you go ahead with the refill request? I only have about three days left. Can it be sent to the CVS on Main Street today?
+[2026-06-23 19:58:25] AGENT: I can't proceed further right now, but I can make sure our clinic support team follows up with you. Would you like me to connect you to our patient support team?
+[2026-06-23 19:58:28] PATIENT: Yes, please connect me. I’d really appreciate it if they can send it today, since I’m running low. Thank you.
+[2026-06-23 19:58:34] AGENT: Connecting you to a representative. Please wait.
+[2026-06-23 19:58:39] AGENT: Hello, you've reached the Pretty Good AI test line. Goodbye.
+[2026-06-23 19:58:40] PATIENT: Okay, thanks for your time. Goodbye.
+[2026-06-23 19:58:47] NOTE: Twilio stream stopped.
+[2026-06-23 19:58:49] NOTE: Realtime bridge closed.

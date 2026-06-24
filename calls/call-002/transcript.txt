@@ -1,0 +1,27 @@
+Scenario ID: call-002
+Scenario Title: Reschedule appointment
+Scenario Goal: Move an existing appointment to a different day.
+Started At: 2026-06-23 19:48:05
+======================================================================
+
+[2026-06-23 19:48:05] NOTE: Twilio voice webhook received. Call stream is being connected.
+[2026-06-23 19:48:05] NOTE: Connecting to OpenAI Realtime.
+[2026-06-23 19:48:05] NOTE: Connected to OpenAI Realtime. Sending session update.
+[2026-06-23 19:48:05] NOTE: Twilio WebSocket connected.
+[2026-06-23 19:48:05] NOTE: Twilio stream started. call_sid=CA089d08df9191e78449b9de9502e9f620
+[2026-06-23 19:48:18] AGENT: This call may be recorded for quality and training purposes. Para español, oprima el dos. Thanks for calling Pivot Point Orthopedics, part of Pretty Good AI. Am I speaking with Jordan?
+[2026-06-23 19:48:20] PATIENT: Hi, this is Casey Thompson, not Jordan. I’m calling to reschedule my Friday 2 PM appointment because of a work conflict.
+[2026-06-23 19:48:32] AGENT: I can help with that. Please provide your date of birth.
+[2026-06-23 19:48:33] PATIENT: It’s September 12, 1979.
+[2026-06-23 19:48:50] AGENT: Just to confirm, I have your name as Casey Thompson and your date of birth as September 12, 1979. Is that correct? If so, please spell your first and last name for me.
+[2026-06-23 19:48:52] PATIENT: Yes, that’s correct. First name Casey, C-A-S-E-Y. Last name Thompson, T-H-O-M-P-S-O-N.
+[2026-06-23 19:49:21] AGENT: Would you like to use your phone number to look up your record? If so, please provide the number you have on file with us. If you're not sure, I can confirm your name and date of birth again. Let me know how you'd like to proceed.
+[2026-06-23 19:49:27] PATIENT: Okay, let me think about the easiest way to help you move this appointment.
+[2026-06-23 19:49:27] PATIENT: You can use my name and date of birth that you already confirmed. I’m just trying to move the Friday 2 PM visit. Monday morning or Wednesday after 3 PM would be best. Could you let me know what’s available and confirm the new time?
+[2026-06-23 19:49:52] AGENT: I can't proceed further right now, but I can make sure our clinic support team follows up with you. Please hold while I document your request for our team.
+[2026-06-23 19:49:53] PATIENT: That’s fine, thanks for noting it. Please have them reach out to confirm a new time,
+[2026-06-23 19:49:57] AGENT: Connecting you to a representative. Please wait.
+[2026-06-23 19:50:02] AGENT: Hello, you've reached the Pretty Good AI test line. Goodbye.
+[2026-06-23 19:50:03] PATIENT: Oh, okay. Thanks anyway—goodbye.
+[2026-06-23 19:50:10] NOTE: Twilio stream stopped.
+[2026-06-23 19:50:12] NOTE: Realtime bridge closed.

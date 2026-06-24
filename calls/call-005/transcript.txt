@@ -1,0 +1,31 @@
+Scenario ID: call-005
+Scenario Title: Office hours and weekend edge case
+Scenario Goal: Ask about office hours and test weekend appointment handling.
+Started At: 2026-06-23 19:58:49
+======================================================================
+
+[2026-06-23 19:58:49] NOTE: Twilio voice webhook received. Call stream is being connected.
+[2026-06-23 19:58:49] NOTE: Connecting to OpenAI Realtime.
+[2026-06-23 19:58:51] NOTE: Connected to OpenAI Realtime. Sending session update.
+[2026-06-23 19:58:51] NOTE: Twilio WebSocket connected.
+[2026-06-23 19:58:51] NOTE: Twilio stream started. call_sid=CA9d49ad3650537c313f672e24316a721e
+[2026-06-23 19:58:56] AGENT: This call may be recorded for quality and training purposes. Para español, oprima el dos.
+[2026-06-23 19:59:02] AGENT: Thanks for calling Pivot Point Orthopedics, part of Pretty Good AI. Am I speaking with Jordan?
+[2026-06-23 19:59:03] PATIENT: Hi, this is Riley Carter, not Jordan.
+[2026-06-23 19:59:13] AGENT: Thanks for letting me know, Riley. Are you calling for yourself or for someone else today?
+[2026-06-23 19:59:14] PATIENT: For myself. I was just wondering, what are your office hours?
+[2026-06-23 19:59:24] AGENT: I can help with that. First, may I have your date of birth?
+[2026-06-23 19:59:25] PATIENT: It’s November 30, 1988.
+[2026-06-23 19:59:37] AGENT: Just to confirm, could you please spell your first and last name for me?
+[2026-06-23 19:59:40] PATIENT: Sure, let me say it clearly for you.
+[2026-06-23 19:59:40] PATIENT: Riley Carter. Riley is R I L E Y. Carter is C A R T E R.
+[2026-06-23 20:00:02] AGENT: I have your phone number as 971-458-8244 and your date of birth...
+[2026-06-23 20:00:05] AGENT: That's November 30th, 1988. Is that correct?
+[2026-06-23 20:00:08] PATIENT: Yes, that’s correct. What are your office hours? And could I come in on Sunday at 10 AM?
+[2026-06-23 20:00:25] AGENT: I can't foresee further right now, but I can make sure our clinic support team follows up with you. Would you like me to connect you to our patient support team?
+[2026-06-23 20:00:26] PATIENT: Yes, please. If Sunday isn’t an option, I’d also like to know the next weekday morning I could come in.
+[2026-06-23 20:00:33] AGENT: Connecting you to a representative. Please wait.
+[2026-06-23 20:00:38] AGENT: Hello, you've reached the Pretty Good AI test line. Goodbye.
+[2026-06-23 20:00:39] PATIENT: Okay, thanks anyway. Goodbye.
+[2026-06-23 20:00:46] NOTE: Twilio stream stopped.
+[2026-06-23 20:00:48] NOTE: Realtime bridge closed.

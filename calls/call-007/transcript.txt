@@ -1,0 +1,16 @@
+Scenario ID: call-007
+Scenario Title: Location and parking question
+Scenario Goal: Ask about the office location and parking.
+Started At: 2026-06-23 20:04:49
+======================================================================
+
+[2026-06-23 20:04:49] NOTE: Twilio voice webhook received. Call stream is being connected.
+[2026-06-23 20:04:50] NOTE: Connecting to OpenAI Realtime.
+[2026-06-23 20:04:50] NOTE: Connected to OpenAI Realtime. Sending session update.
+[2026-06-23 20:04:50] NOTE: Twilio WebSocket connected.
+[2026-06-23 20:04:50] NOTE: Twilio stream started. call_sid=CA77df2ac6020b737a73a896db94bb8735
+[2026-06-23 20:04:56] AGENT: This call may be recorded for quality and training purposes. Para español, oprima el dos.
+[2026-06-23 20:05:03] AGENT: Thanks for calling Pivot Point Orthopedics, part of Pretty Good AI. Am I speaking with Jordan?
+[2026-06-23 20:05:04] PATIENT: No, this is Jamie Parker. I have an appointment coming up and wanted to confirm the address.
+[2026-06-23 20:05:51] NOTE: Twilio WebSocket disconnected.
+[2026-06-23 20:05:53] NOTE: Realtime bridge closed.

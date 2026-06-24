@@ -1,0 +1,22 @@
+Scenario ID: call-006
+Scenario Title: Insurance question
+Scenario Goal: Ask whether the practice accepts a specific insurance.
+Started At: 2026-06-23 20:01:50
+======================================================================
+
+[2026-06-23 20:01:50] NOTE: Twilio voice webhook received. Call stream is being connected.
+[2026-06-23 20:01:50] NOTE: Connecting to OpenAI Realtime.
+[2026-06-23 20:01:51] NOTE: Connected to OpenAI Realtime. Sending session update.
+[2026-06-23 20:01:51] NOTE: Twilio WebSocket connected.
+[2026-06-23 20:01:51] NOTE: Twilio stream started. call_sid=CAc7621589668c1ce8f55e5f7c39edfe0a
+[2026-06-23 20:01:57] AGENT: This call may be recorded for quality and training purposes. Para español, oprima el dos.
+[2026-06-23 20:02:03] AGENT: Thanks for calling Pivot Point Orthopedics, part of Pretty Good AI. Am I speaking with Jordan?
+[2026-06-23 20:02:05] PATIENT: This is Avery Wilson. I’m actually calling to ask about insurance as a potential new patient.
+[2026-06-23 20:02:21] AGENT: Thanks for letting me know, Avery. I can help with insurance questions for new patients. What would you like to know about our insurance policies or coverage?
+[2026-06-23 20:02:23] PATIENT: Do you accept Blue Cross Blue Shield? And if I schedule a first appointment, what should I bring with me?
+[2026-06-23 20:02:53] AGENT: Yes, Pivot Point Orthopedics accepts most major insurance plans, including Blue Cross Blue Shield. For your first appointment, please bring your insurance card, a photo ID, and any relevant medical records or referral paperwork. If you have a list of current medications, that's helpful too. Would you like to schedule your first visit?
+[2026-06-23 20:02:55] PATIENT: That’s great, thank you. I’m still comparing offices, so I’ll hold off on scheduling for now. I appreciate the info.
+[2026-06-23 20:03:10] AGENT: You're welcome. If you have more questions or decide to book an appointment, just give us a call. Have a great day.
+[2026-06-23 20:03:10] PATIENT: You too. Thanks again. Goodbye.
+[2026-06-23 20:03:14] NOTE: Twilio stream stopped.
+[2026-06-23 20:03:16] NOTE: Realtime bridge closed.

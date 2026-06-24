@@ -1,5 +1,6 @@
 ﻿import argparse
 import json
+import time
 from pathlib import Path
 
 from twilio.rest import Client
@@ -28,13 +29,30 @@ def save_call_metadata(folder: Path, data: dict) -> None:
         json.dump(data, file, indent=2)
 
 
-def dry_run_calls(count: int) -> None:
+def get_selected_scenarios(start: int, count: int):
     scenarios = list_scenarios()
+
+    start_index = start - 1
+    end_index = start_index + count
+
+    if start_index < 0:
+        raise ValueError("--start must be 1 or higher")
+
+    if end_index > len(scenarios):
+        raise ValueError(
+            f"You requested calls {start} through {start + count - 1}, "
+            f"but only {len(scenarios)} scenarios exist."
+        )
+
+    return scenarios[start_index:end_index]
+
+
+def dry_run_calls(start: int, count: int) -> None:
+    scenarios = get_selected_scenarios(start=start, count=count)
 
     print("\nDRY RUN ONLY — no phone calls will be placed.\n")
 
-    for index in range(count):
-        scenario = scenarios[index % len(scenarios)]
+    for scenario in scenarios:
         folder = create_call_folder(scenario.id)
 
         metadata = {
@@ -53,7 +71,7 @@ def dry_run_calls(count: int) -> None:
         print("-" * 60)
 
 
-def place_live_calls(count: int) -> None:
+def place_live_calls(start: int, count: int, delay_seconds: int) -> None:
     require_env_for_live_calls()
     validate_assessment_number(settings.assessment_number)
 
@@ -62,10 +80,9 @@ def place_live_calls(count: int) -> None:
         settings.twilio_auth_token,
     )
 
-    scenarios = list_scenarios()
+    scenarios = get_selected_scenarios(start=start, count=count)
 
-    for index in range(count):
-        scenario = scenarios[index % len(scenarios)]
+    for index, scenario in enumerate(scenarios):
         folder = create_call_folder(scenario.id)
 
         voice_url = f"{settings.public_base_url}/voice/{scenario.id}"
@@ -105,6 +122,10 @@ def place_live_calls(count: int) -> None:
         print(f"Saved: {folder / 'metadata.json'}")
         print("-" * 60)
 
+        if index < len(scenarios) - 1:
+            print(f"Waiting {delay_seconds} seconds before next call...")
+            time.sleep(delay_seconds)
+
 
 def main() -> None:
     parser = argparse.ArgumentParser(
@@ -112,10 +133,24 @@ def main() -> None:
     )
 
     parser.add_argument(
+        "--start",
+        type=int,
+        default=1,
+        help="Scenario number to start from. Example: --start 2 starts at call-002.",
+    )
+
+    parser.add_argument(
         "--count",
         type=int,
         default=1,
         help="Number of scenarios/calls to run.",
+    )
+
+    parser.add_argument(
+        "--delay-seconds",
+        type=int,
+        default=180,
+        help="Delay between live calls so conversations do not overlap.",
     )
 
     parser.add_argument(
@@ -130,9 +165,16 @@ def main() -> None:
         raise ValueError("--count must be at least 1")
 
     if args.live:
-        place_live_calls(args.count)
+        place_live_calls(
+            start=args.start,
+            count=args.count,
+            delay_seconds=args.delay_seconds,
+        )
     else:
-        dry_run_calls(args.count)
+        dry_run_calls(
+            start=args.start,
+            count=args.count,
+        )
 
 
 if __name__ == "__main__":
